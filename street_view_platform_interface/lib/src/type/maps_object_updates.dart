@@ -2,8 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui' show hashValues, hashList;
-
 import 'package:flutter/foundation.dart' show objectRuntimeType, setEquals;
 
 import 'maps_object.dart';
@@ -114,8 +112,7 @@ class MapsObjectUpdates<T extends MapsObject> {
   }
 
   @override
-  int get hashCode => hashValues(hashList(_objectsToAdd),
-      hashList(_objectIdsToRemove), hashList(_objectsToChange));
+  int get hashCode => _objectsToAdd.hashValue + _objectIdsToRemove.hashValue + _objectsToChange.hashValue;
 
   @override
   String toString() {
